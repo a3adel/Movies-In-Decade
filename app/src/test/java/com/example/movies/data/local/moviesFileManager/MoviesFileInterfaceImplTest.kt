@@ -12,7 +12,7 @@ import org.junit.Assert
 import org.junit.Test
 import java.io.FileNotFoundException
 
-class MoviesFileManagerImplTest {
+class MoviesFileInterfaceImplTest {
     val jsonValue = "   {\"movies\":[{\n" +
             "            \"title\": \"Destroyer\",\n" +
             "            \"year\": 2018,\n" +
@@ -37,7 +37,7 @@ class MoviesFileManagerImplTest {
         val moshi = Moshi.Builder().build()
         val fileReader = mockk<FileReader>()
         every { fileReader.getTextFromAssetFile("movies.json") }.returns(jsonValue)
-        val SUT = MoviesFileInterface(moshi, fileReader)
+        val SUT = MoviesFileInterfaceImpl(moshi, fileReader)
         MatcherAssert.assertThat("", SUT.getMovies() is FileResponse.FileText)
         Assert.assertEquals((SUT.getMovies() as FileResponse.FileText).data.size, 1)
     }
@@ -49,7 +49,7 @@ class MoviesFileManagerImplTest {
         try {
             every { fileReader.getTextFromAssetFile("") }.throws(FileNotFoundException(""))
 
-            val SUT = MoviesFileInterface(moshi, fileReader)
+            val SUT = MoviesFileInterfaceImpl(moshi, fileReader)
             MatcherAssert.assertThat("", SUT.getMovies() is FileResponse.Error)
             Assert.assertEquals((SUT.getMovies() as FileResponse.Error).cause, "file not found")
         } catch (exc: Exception) {
@@ -63,7 +63,7 @@ class MoviesFileManagerImplTest {
 
         every { moshi.adapter(MoviesEntity::class.java).fromJson(jsonValue) }.returns(null)
         every { fileReader.getTextFromAssetFile("movies.json") }.returns(jsonValue)
-        val SUT = MoviesFileInterface(moshi, fileReader)
+        val SUT = MoviesFileInterfaceImpl(moshi, fileReader)
         MatcherAssert.assertThat("", SUT.getMovies() is FileResponse.Error)
         Assert.assertEquals((SUT.getMovies() as FileResponse.Error).cause, "NullPointerException")
 
@@ -81,7 +81,7 @@ class MoviesFileManagerImplTest {
 
 
             every { fileReader.getTextFromAssetFile("movies.json") }.returns(jsonValue)
-            val SUT = MoviesFileInterface(moshi, fileReader)
+            val SUT = MoviesFileInterfaceImpl(moshi, fileReader)
             MatcherAssert.assertThat("", SUT.getMovies() is FileResponse.Error)
             Assert.assertEquals(
                 (SUT.getMovies() as FileResponse.Error).cause,
