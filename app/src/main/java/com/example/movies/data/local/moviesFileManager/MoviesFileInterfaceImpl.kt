@@ -6,6 +6,7 @@ import com.example.movies.data.local.fileReader.FileReader
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.Moshi
 import java.io.FileNotFoundException
+import java.io.IOException
 import javax.inject.Inject
 
 /**
@@ -26,15 +27,19 @@ class MoviesFileInterfaceImpl @Inject constructor(
             moviesEntity?.movies?.let {
                 FileResponse.FileText(moviesEntity.movies)
             } ?: kotlin.run {
-                FileResponse.Error("there are no movies in the set", "NullPointerException")
+                FileResponse.Error("there are no movies in the set", Causes.NULL_EXCEPTION)
             }
         } catch (exc: FileNotFoundException) {
-            exc.message?.let { FileResponse.Error(it, "FileNotFoundException") } ?: run {
-                FileResponse.Error("file not found", "FileNotFoundException")
+            exc.message?.let { FileResponse.Error(it, Causes.FILE_NOT_FOUND) } ?: run {
+                FileResponse.Error("file not found", Causes.FILE_NOT_FOUND)
             }
         } catch (exc: JsonDataException) {
-            exc.message?.let { FileResponse.Error(it, "JsonDataException") } ?: kotlin.run {
-                FileResponse.Error("json parsing error", "JsonDataException")
+            exc.message?.let { FileResponse.Error(it, Causes.PARSE_EXCEPTION) } ?: kotlin.run {
+                FileResponse.Error("json parsing error", Causes.PARSE_EXCEPTION)
+            }
+        } catch (exc: IOException) {
+            exc.message?.let { FileResponse.Error(it, Causes.IO_EXCEPTION) } ?: kotlin.run {
+                FileResponse.Error("json parsing error", Causes.IO_EXCEPTION)
             }
         }
 
