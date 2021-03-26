@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.myapplication"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -42,27 +42,33 @@ android {
 
 dependencies {
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.12'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    // ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$life_cycle_version"
 
+
+    // Kotlin
+    implementation "androidx.activity:activity-ktx:$activity_version"
+// ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     // LiveData
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$life_cycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
-    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
-    kapt "androidx.lifecycle:lifecycle-compiler:$life_cycle_version"
+
+    // Annotation processor
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+
+    // optional - Test helpers for LiveData
+    testImplementation "androidx.arch.core:core-testing:$arch_version"
 
     // Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$life_cycle_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     //moshi
@@ -73,6 +79,13 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
     implementation("com.squareup.okhttp3:logging-interceptor:$okhttp_version")
+
+    // alerts
+    implementation "com.github.f0ris.sweetalert:library:$sweet_version"
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     //espresso testing
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core"
@@ -95,8 +108,5 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junit_5")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junit_5")
-
-    testImplementation "android.arch.core:core-testing:$arch_version"
-
 
 }
