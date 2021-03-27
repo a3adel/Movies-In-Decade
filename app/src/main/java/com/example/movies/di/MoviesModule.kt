@@ -24,8 +24,4 @@ class MoviesModule {
     fun provideMovieFileInterface(moviesFileInterfaceImpl: MoviesFileInterfaceImpl): MoviesFileInterface =
         moviesFileInterfaceImpl
 
-    @Provides
-    @ViewModelScoped
-    fun providePhotoApiInterface(retrofit: Retrofit) =
-        retrofit.create(PhotosApiInterface::class.java)
 }
