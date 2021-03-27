@@ -1,5 +1,6 @@
 package com.example.movies.presentation.home
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -23,21 +24,27 @@ class MoviesViewModel @Inject constructor(
     val moviesListLiveData: LiveData<List<Movie>> get() = moviesListMutableLiveData
 
     fun getMovies() {
+        showProgressBarMutableLiveData.postValue(SingleEvent(Unit))
         viewModelScope.launch(dispatcher.io()) {
-            showProgressBarMutableLiveData.postValue(SingleEvent(Unit))
+
             when (val moviesResource = topRatedMoviesUseCase.getTopRatedMovies()) {
                 is Resource.Success -> {
                     hideProgressBarMutableLiveData.postValue(SingleEvent(Unit))
 
-                    moviesResource.data?.let { data -> moviesListMutableLiveData.postValue(data) }
+                    moviesResource.data?.let { data ->
+                        moviesListMutableLiveData.postValue(data)
+                        Log.d("VIEWMODELMOVIES","movie  ${data[0].title}")
+                    }
+
                 }
                 is Resource.Error -> {
-                    hideProgressBarMutableLiveData.postValue(SingleEvent(Unit))
+                    hideProgressBarMutableLiveData.postValue (SingleEvent(Unit))
 
                     moviesResource.message?.let { message ->
                         toastMutableLiveData.postValue(
                             SingleEvent(message)
                         )
+                        Log . d ("VIEWMODELMOVIES","error $message")
                     }
                 }
             }

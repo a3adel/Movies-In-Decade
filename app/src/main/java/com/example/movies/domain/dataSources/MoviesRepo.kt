@@ -5,4 +5,5 @@ import com.example.movies.domain.models.Movie
 
 interface MoviesRepo {
     suspend fun getMovies(): Resource<List<Movie>>
+    suspend fun searchMovies(query: String): Resource<List<Movie>>
 }

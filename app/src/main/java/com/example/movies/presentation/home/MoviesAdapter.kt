@@ -1,5 +1,6 @@
 package com.example.movies.presentation.home
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -25,10 +26,10 @@ class MoviesAdapter() : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.bind(moviesList[position])
+        holder.bind(differ.currentList[position])
     }
 
-    override fun getItemCount(): Int = moviesList.size
+    override fun getItemCount(): Int = differ.currentList.size
 
     private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Movie>() {
         override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
@@ -40,8 +41,11 @@ class MoviesAdapter() : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
         }
     }
     private val differ = AsyncListDiffer(this, DIFF_CALLBACK)
+
     fun submitList(movies:List<Movie>){
-        differ.submitList(moviesList)
+        Log . d ("VIEWMODELMOVIES","ADAPTER ${movies.size}")
+
+        differ.submitList(movies)
     }
 }
 

@@ -2,6 +2,8 @@ package com.example.movies
 
 import com.example.movies.data.entities.MovieEntity
 import com.example.movies.domain.models.Movie
+import com.example.movies.presentation.models.YearMovie
+import com.example.movies.presentation.models.YearMovies
 
 object Values {
     val THE_MARTIAN_MOVIE_ENTITY = MovieEntity(
@@ -65,6 +67,144 @@ object Values {
     )
 
 
+    val HARRY_POTTER_YEAR_MOVIE = YearMovie(
+        title = "harry potter",
+        cast = listOf(
+            "Daniel Radcliffe",
+            "Rupert Grint",
+            "Emma Watson"
+        ),
+        genres = listOf(
+            "Action",
+            "Adventure",
+            "Fantasy"
+        ),
+        rating = 4f
+
+    )
+
+    val DADDY_IS_HOME_YEAR_MOVIE = YearMovie(
+        title = "Daddy's Home",
+        cast = listOf(
+            "Mark Wahlberg",
+            "Will Ferrell",
+            "Linda Cardellini"
+        ),
+        rating = 5f,
+        genres = listOf("Comedy")
+    )
+
+    val THE_MARTIAN_YEAR_MOVIE = YearMovie(
+        title = "the martian",
+        cast = listOf("Matt Damon"),
+        genres = listOf("Science Fiction"),
+        rating = 3f
+    )
+
+
+
+    val WOMEN_IN_BLACK_MOVIE = Movie(
+        title = "The Woman in Black 2: Angel of Death",
+        year = 2015,
+        cast = listOf(
+            "Phoebe Fox",
+            "Jeremy Irvine",
+            "Helen McCrory",
+            "Adrian Rawlins",
+            "Ned Dennehy"
+        ),
+        genres = listOf("Horror"),
+        rating = 2f
+    )
+    val TAKEN_MOVIE = Movie(
+        title = "Taken 3",
+        year = 2015,
+        cast = listOf(
+            "Liam Neeson",
+            "Forest Whitaker",
+            "Famke Janssen",
+            "Maggie Grace"
+        ),
+        genres = listOf("Action"),
+        rating = 4f
+    )
+
+    val MATCH_MOVIE = Movie(
+        title = "Match",
+        year = 2015,
+        cast = listOf(
+            "Patrick Stewart",
+            "Carla Gugino",
+            "Matthew Lillard",
+            "Rob Yang"
+        ),
+        genres = listOf("Drama"),
+        rating = 2f
+    )
+
+    val BLACK_HAT_MOVIE = Movie(
+        title = "blackHat",
+        year = 2015,
+        cast = listOf(
+            "Chris Hemsworth",
+            "Viola Davis",
+            "Manny Montana",
+            "Tang Wei"
+        ),
+        genres = listOf("Action"),
+        rating = 1f
+    )
+
+
+
+    val WOMEN_IN_BLACK_YEAR_MOVIE = YearMovie(
+        title = "The Woman in Black 2: Angel of Death",
+        cast = listOf(
+            "Phoebe Fox",
+            "Jeremy Irvine",
+            "Helen McCrory",
+            "Adrian Rawlins",
+            "Ned Dennehy"
+        ),
+        genres = listOf("Horror"),
+        rating = 2f
+    )
+    val TAKEN_YEAR_MOVIE = YearMovie(
+        title = "Taken 3",
+        cast = listOf(
+            "Liam Neeson",
+            "Forest Whitaker",
+            "Famke Janssen",
+            "Maggie Grace"
+        ),
+        genres = listOf("Action"),
+        rating = 4f
+    )
+
+    val MATCH_YEAR_MOVIE = YearMovie(
+        title = "Match",
+        cast = listOf(
+            "Patrick Stewart",
+            "Carla Gugino",
+            "Matthew Lillard",
+            "Rob Yang"
+        ),
+        genres = listOf("Drama"),
+        rating = 1f
+    )
+
+    val BLACK_HAT_YEAR_MOVIE = YearMovie(
+        title = "blackHat",
+        cast = listOf(
+            "Chris Hemsworth",
+            "Viola Davis",
+            "Manny Montana",
+            "Tang Wei"
+        ),
+        genres = listOf("Action"),
+        rating = 2f
+    )
+
     val MOVIE_ENTITIES_LIST = listOf<MovieEntity>(
         HARRY_POTTER_MOVIE_ENTITY,
         THE_MARTIAN_MOVIE_ENTITY
@@ -85,4 +225,16 @@ object Values {
         HARRY_POTTER_MOVIE,// rating is 4
         THE_MARTIAN_MOVIE // rating is 3
     )
+
+    val YEAR_MOVIES_LIST = listOf(
+        YearMovies(
+            2015, listOf(
+                DADDY_IS_HOME_YEAR_MOVIE, THE_MARTIAN_YEAR_MOVIE, TAKEN_YEAR_MOVIE,
+                MATCH_YEAR_MOVIE, WOMEN_IN_BLACK_YEAR_MOVIE
+            )
+        ),
+        YearMovies(2011, listOf(HARRY_POTTER_YEAR_MOVIE))
+
+    )
+    val FILTERED_LIST = listOf(HARRY_POTTER_MOVIE)
 }
