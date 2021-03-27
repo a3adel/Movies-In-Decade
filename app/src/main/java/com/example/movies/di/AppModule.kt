@@ -2,6 +2,8 @@ package com.example.movies.di
 
 import com.example.movies.data.local.fileReader.FileReader
 import com.example.movies.data.local.fileReader.FileReaderImpl
+import com.example.movies.data.memory.MemoryCacheInterface
+import com.example.movies.data.memory.MemoryCacheInterfaceImpl
 import com.example.movies.data.remote.ApiConstants
 import com.example.movies.presentation.base.Dispatcher
 import com.example.movies.presentation.base.DispatcherImpl
@@ -36,4 +38,9 @@ class AppModule {
     @Singleton
     @Provides
     fun provideDispatcher(dispatcherImpl: DispatcherImpl): Dispatcher = dispatcherImpl
+
+    @Singleton
+    @Provides
+    fun provideMemoryCacheInterface(memoryCacheInterfaceImpl: MemoryCacheInterfaceImpl): MemoryCacheInterface =
+        memoryCacheInterfaceImpl
 }

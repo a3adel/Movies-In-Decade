@@ -19,6 +19,7 @@ class MoviesErrorManager @Inject constructor(@ApplicationContext private val con
             Pair(Causes.FILE_NOT_FOUND, context.getString(R.string.no_file)),
             Pair(Causes.PARSE_EXCEPTION, context.getString(R.string.parsing_error)),
             Pair(Causes.NULL_EXCEPTION, context.getString(R.string.default_error)),
+            Pair(Causes.EMPTY_MOVIES_LIST, context.getString(R.string.no_movies_found)),
 
             )
 }

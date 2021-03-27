@@ -5,4 +5,5 @@ object Causes{
     const val IO_EXCEPTION ="IOException"
     const val PARSE_EXCEPTION ="JsonDataException"
     const val NULL_EXCEPTION ="NullPointerException"
+    const val EMPTY_MOVIES_LIST ="EmptyMovies"
 }

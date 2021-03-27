@@ -3,4 +3,7 @@
     <string name="no_file">The app is missing the data, please update it</string>
     <string name="parsing_error">The data is corrupt, please update the data</string>
     <string name="default_error">Something went wrong, please try again later</string>
+    <string name="no_movies_found">No movies found</string>
+    <string name="invalid_query">Please insert valid search query</string>
+    <string name="search_hint">Search for movie</string>
 </resources>

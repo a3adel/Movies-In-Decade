@@ -1,12 +1,17 @@
 package com.example.movies.presentation.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.movies.R
 import com.example.movies.databinding.ActivityMoviesBinding
 import com.example.movies.domain.models.Movie
 import com.example.movies.presentation.base.BaseActivity
+import com.example.movies.presentation.searchMovies.SearchMoviesActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,5 +45,14 @@ class MoviesActivity : BaseActivity() {
         adapter.submitList(list)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.home_menu,menu)
+        return true
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId==R.id.search)
+            startActivity(Intent(this, SearchMoviesActivity::class.java))
+        return super.onOptionsItemSelected(item)
+    }
 }
