@@ -37,6 +37,7 @@ This layer is all about the data It fetches the data from different data sources
 The entry point of the data layer is the `Repo` class which is called from the domain layer
 each `Repo` consumes different client based on the source of the data `RemoteClient`, `LocalClient` or `MemoryClient`
 each `Client` consumes `DataInterface` for example the `MoviesLocalClient` uses the `MoviesFileInterface` and each `DataInterface` returns `Response` entity object to the `Client` in which the `Client` mapps it to Data Object,
+
 ----------------------------------------------------------------------------------------------
 
 To make the searching process faster I did the following:-
