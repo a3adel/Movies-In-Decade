@@ -8,15 +8,19 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movies.databinding.ItemMovieBinding
 import com.example.movies.domain.models.Movie
+import com.example.movies.presentation.base.OnRecyclerViewItemClickListener
 
 class MoviesAdapter() : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
-    private val moviesList = ArrayList<Movie>()
+    var onRecyclerViewItemClickListener: OnRecyclerViewItemClickListener<Movie>? = null
 
-    class MovieViewHolder(private val binder: ItemMovieBinding) :
+    inner class MovieViewHolder(private val binder: ItemMovieBinding) :
         RecyclerView.ViewHolder(binder.root) {
         fun bind(movie: Movie) {
             binder.nameTextView.text = movie.title
             binder.rateValueTextView.text = movie.rating.toString()
+            binder.root.setOnClickListener {
+                onRecyclerViewItemClickListener?.let { listener -> listener.onItemClicked(movie) }
+            }
         }
     }
 
@@ -42,8 +46,8 @@ class MoviesAdapter() : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
     }
     private val differ = AsyncListDiffer(this, DIFF_CALLBACK)
 
-    fun submitList(movies:List<Movie>){
-        Log . d ("VIEWMODELMOVIES","ADAPTER ${movies.size}")
+    fun submitList(movies: List<Movie>) {
+        Log.d("VIEWMODELMOVIES", "ADAPTER ${movies.size}")
 
         differ.submitList(movies)
     }

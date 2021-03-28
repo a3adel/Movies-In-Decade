@@ -12,6 +12,7 @@ class PhotosPageEntityToPhotosPageMapper @Inject constructor(private val photoEn
     override fun mapFrom(from: PhotosPageEntity): PhotosPage {
         return PhotosPage(
             from.page,
+            from.pages,
             photos = from.photosData.map {photoEntity ->  photoEntityToPhotosMapper.mapFrom(photoEntity) })
     }
 }

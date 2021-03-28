@@ -4,10 +4,11 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 
-class NetworkConnectivityImpl @Inject constructor(private val _context: Context) :
+class NetworkConnectivityImpl @Inject constructor(@ApplicationContext private val _context: Context) :
     NetworkConnectivity {
     override fun isConnected(): Boolean {
         val connectivityManager =
