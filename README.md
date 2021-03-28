@@ -2,7 +2,7 @@
 ### The past decade held a lot of movies, some left a mark and some were just a set of 24-60 pictures per second., In this project I'm trying to showcase some of these movies
 
 ## IMPORTANT NOTE
-    To try the application clone the repo and add your flicker API key to loca.properties file under and rebuild the project or it would give you syntax error
+    To try the application clone the repo and add your flicker API key to local.properties file under and rebuild the project or it would give you syntax error
 --------------------------------------------------------------------------------------
 This Application has 3 main user stories:-
 - User can Get all the movies from json file stored in the assets foler
