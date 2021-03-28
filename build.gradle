@@ -44,4 +44,6 @@ ext {
     activity_version = "1.2.2"
     sweet_version = "1.6.2"
     nav_version = "2.3.4"
+    pagingVersion = '3.0.0-beta01'
+    glideVersion = "4.11.0"
 }
