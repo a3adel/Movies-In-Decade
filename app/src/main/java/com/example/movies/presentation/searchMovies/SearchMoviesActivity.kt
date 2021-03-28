@@ -1,6 +1,7 @@
 package com.example.movies.presentation.searchMovies
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,7 +31,7 @@ class SearchMoviesActivity : BaseActivity() {
         binder.searchResultsRecyclerView.layoutManager = linearLayoutManager
         binder.searchResultsRecyclerView.adapter = searchResultsAdapter
         searchViewModel.viewModelScope.launch {
-            binder.queryEditText.textChanges().debounce(750).collect {
+            binder.queryEditText.textChanges().debounce(500).collect {
                 searchViewModel.searchMovies(it.toString())
             }
         }
@@ -43,13 +44,24 @@ class SearchMoviesActivity : BaseActivity() {
         searchViewModel.toastLiveData.observe(this, ::handleToast)
         searchViewModel.yearsMoviesLiveData.observe(this, ::handleSearchResult)
         searchViewModel.invalidQueryLiveData.observe(this, ::handleInvalidQuery)
+        searchViewModel.noSearchResultsLiveData.observe(this, ::handleEmptySearch)
+    }
+
+    private fun handleEmptySearch(unit: Unit?) {
+        binder.searchResultsRecyclerView.visibility= View.GONE
+        binder.noMoviesHintTextView.visibility=View.VISIBLE
     }
 
     private fun handleInvalidQuery(singleEvent: SingleEvent<String>?) {
         searchResultsAdapter.clearList()
+        binder.searchResultsRecyclerView.visibility= View.GONE
+        binder.noMoviesHintTextView.visibility=View.VISIBLE
     }
 
     private fun handleSearchResult(list: List<YearMovies>) {
         searchResultsAdapter.submitList(list)
+        binder.searchResultsRecyclerView.visibility= View.VISIBLE
+        binder.noMoviesHintTextView.visibility=View.GONE
+
     }
 }

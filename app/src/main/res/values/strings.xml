@@ -10,4 +10,5 @@
     <string name="genres">Genres:</string>
     <string name="year">Year:</string>
     <string name="cast">Cast:</string>
+    <string name="no_movies_found_by_this_name_try_another_movie">No Movies Found by this name, try another movie</string>
 </resources>

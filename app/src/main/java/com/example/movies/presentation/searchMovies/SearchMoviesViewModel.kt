@@ -41,12 +41,11 @@ class SearchMoviesViewModel @Inject constructor(
                         hideProgressBarMutableLiveData.postValue(SingleEvent(Unit))
 
                         if (searchResource.data.isNotEmpty()){
-                            toastMutableLiveData.postValue(SingleEvent(searchResource.data.size.toString()))
                             yearsMoviesMutableLiveData.postValue(searchResource.data)
                         }
                         else{
                             noSearchResultsMutableLiveData.postValue(Unit)
-                            toastMutableLiveData.postValue(SingleEvent(searchResource.data.size.toString()))
+
 
                         }
                     }
