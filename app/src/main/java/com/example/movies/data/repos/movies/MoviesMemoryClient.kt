@@ -1,7 +1,7 @@
 package com.example.movies.data.repos.movies
 
 import com.example.movies.data.Resource
-import com.example.movies.data.local.moviesFileManager.Causes
+import com.example.movies.data.local.moviesFileManager.MOVIES_ERROR_Causes
 import com.example.movies.data.memory.MemoryCacheInterface
 import com.example.movies.domain.models.Movie
 import java.util.*
@@ -23,13 +23,13 @@ class MoviesMemoryClient @Inject constructor(
                 Resource.Success(movies)
             else
                 Resource.Error(
-                    errorManager.getErrorMessage(Causes.EMPTY_MOVIES_LIST),
-                    Causes.EMPTY_MOVIES_LIST
+                    errorManager.getErrorMessage(MOVIES_ERROR_Causes.EMPTY_MOVIES_LIST),
+                    MOVIES_ERROR_Causes.EMPTY_MOVIES_LIST
                 )
         } ?: kotlin.run {
             Resource.Error(
-                errorManager.getErrorMessage(Causes.NULL_EXCEPTION),
-                Causes.NULL_EXCEPTION
+                errorManager.getErrorMessage(MOVIES_ERROR_Causes.NULL_EXCEPTION),
+                MOVIES_ERROR_Causes.NULL_EXCEPTION
             )
         }
     }
@@ -44,8 +44,8 @@ class MoviesMemoryClient @Inject constructor(
         }
             ?: kotlin.run {
                 Resource.Error(
-                    errorManager.getErrorMessage(Causes.NULL_EXCEPTION),
-                    Causes.NULL_EXCEPTION
+                    errorManager.getErrorMessage(MOVIES_ERROR_Causes.NULL_EXCEPTION),
+                    MOVIES_ERROR_Causes.NULL_EXCEPTION
                 )
             }
     }

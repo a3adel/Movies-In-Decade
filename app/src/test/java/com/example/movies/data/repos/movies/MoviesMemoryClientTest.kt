@@ -2,9 +2,8 @@ package com.example.movies.data.repos.movies
 
 import com.example.movies.Values
 import com.example.movies.data.Resource
-import com.example.movies.data.local.moviesFileManager.Causes
+import com.example.movies.data.local.moviesFileManager.MOVIES_ERROR_Causes
 import com.example.movies.data.memory.MemoryCacheInterface
-import com.example.movies.domain.models.Movie
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -13,7 +12,6 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.mockito.ArgumentMatchers.any
 
 @ExperimentalCoroutinesApi
 internal class MoviesMemoryClientTest {
@@ -43,7 +41,7 @@ internal class MoviesMemoryClientTest {
 
         val moviesResource = SUT.getMoviesFromMemory()
         Assert.assertEquals(moviesResource.javaClass.name, Resource.Error::class.java.name)
-        assertEquals((moviesResource as Resource.Error).cause, Causes.EMPTY_MOVIES_LIST)
+        assertEquals((moviesResource as Resource.Error).cause, MOVIES_ERROR_Causes.EMPTY_MOVIES_LIST)
     }
 
     @Test
@@ -52,7 +50,7 @@ internal class MoviesMemoryClientTest {
 
         val moviesResource = SUT.getMoviesFromMemory()
         Assert.assertEquals(moviesResource.javaClass.name, Resource.Error::class.java.name)
-        assertEquals((moviesResource as Resource.Error).cause, Causes.NULL_EXCEPTION)
+        assertEquals((moviesResource as Resource.Error).cause, MOVIES_ERROR_Causes.NULL_EXCEPTION)
     }
 
 
@@ -74,7 +72,7 @@ internal class MoviesMemoryClientTest {
 
         val moviesResource = SUT.searchMovies("")
         Assert.assertEquals(moviesResource.javaClass.name, Resource.Error::class.java.name)
-        assertEquals((moviesResource as Resource.Error).cause, Causes.NULL_EXCEPTION)
+        assertEquals((moviesResource as Resource.Error).cause, MOVIES_ERROR_Causes.NULL_EXCEPTION)
     }
 
 

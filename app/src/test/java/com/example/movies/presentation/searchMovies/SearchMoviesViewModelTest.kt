@@ -32,15 +32,15 @@ internal class SearchMoviesViewModelTest {
     val YEARS_MOVIES_LIST = listOf(
         YearMovies(
             2015, listOf(
-                Values.DADDY_IS_HOME_YEAR_MOVIE,
+                Values.DADDY_IS_HOME,
                 Values.TAKEN_YEAR_MOVIE,
-                Values.THE_MARTIAN_YEAR_MOVIE,
+                Values.THE_MARTIAN_MOVIE,
                 Values.WOMEN_IN_BLACK_YEAR_MOVIE,
                 Values.BLACK_HAT_YEAR_MOVIE,
 
                 )
         ),
-        YearMovies(2011, listOf(Values.HARRY_POTTER_YEAR_MOVIE))
+        YearMovies(2011, listOf(Values.HARRY_POTTER_MOVIE))
 
     )
 

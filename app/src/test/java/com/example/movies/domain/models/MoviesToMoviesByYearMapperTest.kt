@@ -7,11 +7,9 @@ import org.junit.Test
 
 internal class MoviesToMoviesByYearMapperTest {
     lateinit var SUT: MoviesToMoviesByYearMapper
-    lateinit var mapper: MovieToYearMovieMapper
     @Before
     fun setUp() {
-        mapper = MovieToYearMovieMapper()
-        SUT = MoviesToMoviesByYearMapper(mapper)
+        SUT = MoviesToMoviesByYearMapper()
     }
 
     @Test

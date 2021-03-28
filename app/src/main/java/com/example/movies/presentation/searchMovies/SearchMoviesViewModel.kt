@@ -1,7 +1,6 @@
 package com.example.movies.presentation.searchMovies
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -31,7 +30,6 @@ class SearchMoviesViewModel @Inject constructor(
 
     @SuppressLint("NullSafeMutableLiveData")
     fun searchMovies(query: String) {
-        Log.d("SEARCH_MOVIES",query)
         val validQueryUiResult = searchValidator.validateQuery(query)
         if (validQueryUiResult.isValid) {
             showProgressBarMutableLiveData.value=(SingleEvent(Unit))
@@ -41,12 +39,11 @@ class SearchMoviesViewModel @Inject constructor(
                         hideProgressBarMutableLiveData.postValue(SingleEvent(Unit))
 
                         if (searchResource.data.isNotEmpty()){
-                            toastMutableLiveData.postValue(SingleEvent(searchResource.data.size.toString()))
                             yearsMoviesMutableLiveData.postValue(searchResource.data)
                         }
                         else{
                             noSearchResultsMutableLiveData.postValue(Unit)
-                            toastMutableLiveData.postValue(SingleEvent(searchResource.data.size.toString()))
+
 
                         }
                     }

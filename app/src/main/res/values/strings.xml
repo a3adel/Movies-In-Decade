@@ -1,9 +1,15 @@
 <resources>
-    <string name="app_name">Movies</string>
+    <string name="app_name">Decade Of Movies</string>
     <string name="no_file">The app is missing the data, please update it</string>
     <string name="parsing_error">The data is corrupt, please update the data</string>
     <string name="default_error">Something went wrong, please try again later</string>
     <string name="no_movies_found">No movies found</string>
     <string name="invalid_query">Please insert valid search query</string>
     <string name="search_hint">Search for movie</string>
+    <string name="no_network">Netwrok is not available, please check your network</string>
+    <string name="genres">Genres:</string>
+    <string name="year">Year:</string>
+    <string name="cast">Cast:</string>
+    <string name="no_movies_found_by_this_name_try_another_movie">No Movies Found by this name, try another movie</string>
+    <string name="progress_photos">Fetching photos</string>
 </resources>

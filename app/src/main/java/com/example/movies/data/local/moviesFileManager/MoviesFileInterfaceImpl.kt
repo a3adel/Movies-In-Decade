@@ -27,19 +27,19 @@ class MoviesFileInterfaceImpl @Inject constructor(
             moviesEntity?.movies?.let {
                 FileResponse.FileText(moviesEntity.movies)
             } ?: kotlin.run {
-                FileResponse.Error("there are no movies in the set", Causes.NULL_EXCEPTION)
+                FileResponse.Error("there are no movies in the set", MOVIES_ERROR_Causes.NULL_EXCEPTION)
             }
         } catch (exc: FileNotFoundException) {
-            exc.message?.let { FileResponse.Error(it, Causes.FILE_NOT_FOUND) } ?: run {
-                FileResponse.Error("file not found", Causes.FILE_NOT_FOUND)
+            exc.message?.let { FileResponse.Error(it, MOVIES_ERROR_Causes.FILE_NOT_FOUND) } ?: run {
+                FileResponse.Error("file not found", MOVIES_ERROR_Causes.FILE_NOT_FOUND)
             }
         } catch (exc: JsonDataException) {
-            exc.message?.let { FileResponse.Error(it, Causes.PARSE_EXCEPTION) } ?: kotlin.run {
-                FileResponse.Error("json parsing error", Causes.PARSE_EXCEPTION)
+            exc.message?.let { FileResponse.Error(it, MOVIES_ERROR_Causes.PARSE_EXCEPTION) } ?: kotlin.run {
+                FileResponse.Error("json parsing error", MOVIES_ERROR_Causes.PARSE_EXCEPTION)
             }
         } catch (exc: IOException) {
-            exc.message?.let { FileResponse.Error(it, Causes.IO_EXCEPTION) } ?: kotlin.run {
-                FileResponse.Error("json parsing error", Causes.IO_EXCEPTION)
+            exc.message?.let { FileResponse.Error(it, MOVIES_ERROR_Causes.IO_EXCEPTION) } ?: kotlin.run {
+                FileResponse.Error("json parsing error", MOVIES_ERROR_Causes.IO_EXCEPTION)
             }
         }
 

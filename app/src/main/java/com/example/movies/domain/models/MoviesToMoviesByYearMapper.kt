@@ -11,13 +11,13 @@ import javax.inject.Inject
  *     which maps Movie object to YearMovie object
  */
 
-class MoviesToMoviesByYearMapper @Inject constructor(private val movieToYearMovieMapper: MovieToYearMovieMapper) :
+class MoviesToMoviesByYearMapper @Inject constructor() :
     Mapper<List<Movie>, List<YearMovies>>() {
     override fun mapFrom(movies: List<Movie>): List<YearMovies> {
         val moviesByYear = ArrayList<YearMovies>()
         val groupedByYear = movies.groupBy { movie -> movie.year }
         for (key in groupedByYear.keys) {
-            groupedByYear[key]?.map { movie -> movieToYearMovieMapper.mapFrom(movie) }
+            groupedByYear[key]
                 ?.let { groupedMovies ->
                     val yearMovie = YearMovies(key, groupedMovies.sortedByDescending { it.rating })
                     moviesByYear.add(yearMovie)
