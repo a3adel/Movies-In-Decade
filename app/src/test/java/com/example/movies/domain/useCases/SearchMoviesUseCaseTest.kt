@@ -28,38 +28,21 @@ internal class SearchMoviesUseCaseTest {
     )
 
 
-    val YEAR_MOVIES_LIST = listOf(
-        YearMovies(
-            2015, listOf(
-                Values.DADDY_IS_HOME,
-                Values.TAKEN_YEAR_MOVIE,
-                Values.THE_MARTIAN_MOVIE,
-                Values.WOMEN_IN_BLACK_YEAR_MOVIE,
-                Values.BLACK_HAT_YEAR_MOVIE,
-                Values.MATCH_YEAR_MOVIE
+    val YEAR_MOVIES_LIST = ArrayList<YearMovies>()
+    val YEAR_MOVIE_1 = YearMovies(2011, listOf(Values.HARRY_POTTER_MOVIE))
+    val YEAR_MOVIE_2 = YearMovies(
+        2015, listOf(
+            Values.DADDY_IS_HOME,
+            Values.TAKEN_YEAR_MOVIE,
+            Values.THE_MARTIAN_MOVIE,
+            Values.WOMEN_IN_BLACK_YEAR_MOVIE,
+            Values.BLACK_HAT_YEAR_MOVIE,
 
-
-                )
-        ),
-        YearMovies(2011, listOf(Values.HARRY_POTTER_MOVIE))
-
+            )
     )
 
+    val EXPECTED_YEAR_MOVIES_LIST = ArrayList<YearMovies>()
 
-    val EXPECTED_YEAR_MOVIES_LIST = listOf(
-        YearMovies(
-            2015, listOf(
-                Values.DADDY_IS_HOME,
-                Values.TAKEN_YEAR_MOVIE,
-                Values.THE_MARTIAN_MOVIE,
-                Values.WOMEN_IN_BLACK_YEAR_MOVIE,
-                Values.BLACK_HAT_YEAR_MOVIE,
-
-                )
-        ),
-        YearMovies(2011, listOf(Values.HARRY_POTTER_MOVIE))
-
-    )
 
     lateinit var SUT: SearchMoviesUseCase
     lateinit var moviesToMoviesByYearMapper: MoviesToMoviesByYearMapper
@@ -71,6 +54,21 @@ internal class SearchMoviesUseCaseTest {
         moviesRepo = mockk<MoviesRepoImpl>()
         SUT = SearchMoviesUseCase(moviesRepo, moviesToMoviesByYearMapper)
 
+        EXPECTED_YEAR_MOVIES_LIST.add(YEAR_MOVIE_1)
+        EXPECTED_YEAR_MOVIES_LIST.add(YEAR_MOVIE_2)
+        YEAR_MOVIES_LIST.add(YEAR_MOVIE_1)
+        YEAR_MOVIES_LIST.add(YearMovies(
+            2015, listOf(
+                Values.DADDY_IS_HOME,
+                Values.TAKEN_YEAR_MOVIE,
+                Values.THE_MARTIAN_MOVIE,
+                Values.WOMEN_IN_BLACK_YEAR_MOVIE,
+                Values.BLACK_HAT_YEAR_MOVIE,
+                Values.MATCH_YEAR_MOVIE
+
+
+            )
+        ))
     }
 
     @Test

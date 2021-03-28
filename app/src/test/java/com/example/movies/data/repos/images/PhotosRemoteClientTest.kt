@@ -38,7 +38,8 @@ internal class PhotosRemoteClientTest {
             coEvery {
                 apiInterface.searchPhotos(
                     text = any(),
-                    page = any()
+                    page = any(),
+                    perPage = any(),format = any(),method = any(),apiKey = any(),noJsonCallBack = any()
                 )
             } returns Response.success(IMAGE_SEARCH_ENTITY)
             coEvery { mapper.mapFrom(any()) } returns PHOTOS_PAGE

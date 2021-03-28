@@ -24,6 +24,7 @@ android {
         buildConfigField("String", "API_KEY", localProperties['FLICKER_API_KEY'])
 
 
+        
     }
 
     buildTypes {
