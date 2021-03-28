@@ -50,7 +50,6 @@ class MovieDetailsActivity : BaseActivity() {
         searchJob = lifecycleScope.launch {
             photosViewModel.searchPhotos(query).collectLatest {
                 photosAdapter.submitData(it)
-                hideProgressDialog()
             }
         }
     }
@@ -62,16 +61,23 @@ class MovieDetailsActivity : BaseActivity() {
         photosAdapter.addLoadStateListener { loadState ->
             val isListEmpty =
                 loadState.refresh is LoadState.NotLoading && photosAdapter.itemCount == 0
-            if (isListEmpty)
+            if (isListEmpty) {
                 binder.noImagesHint.visibility = View.VISIBLE
-            else
-                binder.noImagesHint.visibility=View.GONE
-            hideProgressDialog()
+            } else
+                binder.noImagesHint.visibility = View.GONE
+
+            val loadingStat =
+                loadState.source.refresh as? LoadState.NotLoading
+
+            loadingStat?.let {
+                hideProgressDialog()
+            }
             val errorState = loadState.source.append as? LoadState.Error
                 ?: loadState.source.prepend as? LoadState.Error
                 ?: loadState.refresh as? LoadState.Error
                 ?: loadState.prepend as? LoadState.Error
             errorState?.let {
+                hideProgressDialog()
                 Toast.makeText(
                     this,
                     "\uD83D\uDE28 Wooops ${it.error}",
