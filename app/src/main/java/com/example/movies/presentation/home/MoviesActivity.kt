@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movies.R
 import com.example.movies.databinding.ActivityMoviesBinding
@@ -38,6 +39,8 @@ class MoviesActivity : BaseActivity() {
             }
         }
         val layoutManager = LinearLayoutManager(this)
+        val decoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+        binder.moviesRecyclerView.addItemDecoration(decoration)
         binder.moviesRecyclerView.layoutManager = layoutManager
         binder.moviesRecyclerView.adapter = adapter
 

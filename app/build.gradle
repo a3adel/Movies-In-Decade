@@ -20,8 +20,14 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         def localProperties = new Properties()
-        localProperties.load(new FileInputStream(rootProject.file("local.properties")))
-        buildConfigField ("String", "API_KEY",localProperties['FLICKER_API_KEY'])
+        try {
+            localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+            buildConfigField ("String", "API_KEY",localProperties['FLICKER_API_KEY'])
+        }
+        catch (Exception e){
+            buildConfigField ("String", "API_KEY","")
+        }
+
     }
 
     buildTypes {

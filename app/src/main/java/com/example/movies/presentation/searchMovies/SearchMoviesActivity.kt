@@ -55,7 +55,7 @@ class SearchMoviesActivity : BaseActivity() {
     private fun handleInvalidQuery(singleEvent: SingleEvent<String>?) {
         searchResultsAdapter.clearList()
         binder.searchResultsRecyclerView.visibility= View.GONE
-        binder.noMoviesHintTextView.visibility=View.VISIBLE
+        binder.noMoviesHintTextView.visibility=View.GONE
     }
 
     private fun handleSearchResult(list: List<YearMovies>) {
