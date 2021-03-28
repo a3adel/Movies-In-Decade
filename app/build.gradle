@@ -25,7 +25,7 @@ android {
             buildConfigField ("String", "API_KEY",localProperties['FLICKER_API_KEY'])
         }
         catch (Exception e){
-            buildConfigField ("String", "API_KEY","DummyKeyToPassGithubActions")
+            buildConfigField ("String", "API_KEY","\"DummyKeyToPassGithubActions\"")
         }
 
     }
