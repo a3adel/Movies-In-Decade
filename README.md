@@ -33,7 +33,6 @@ In this Layer I handle any business scenarios( like filtering and sorting) and A
 It also contains Mappers (When needed) If the Model in the Ui is different from the Application Models
 
 ## Data Layer
-
 This layer is all about the data It fetches the data from different data sources(`Remote`,`Local`,`Memory`), it mapps the response model to the application model and it returns those data
 The entry point of the data layer is the `Repo` class which is called from the domain layer
 each `Repo` consumes different client based on the source of the data `RemoteClient`, `LocalClient` or `MemoryClient`
