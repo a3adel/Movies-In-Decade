@@ -1,5 +1,6 @@
 package com.example.movies.data.repos.images
 
+import com.example.movies.IMAGE_SEARCH_ENTITY
 import com.example.movies.PHOTOS_ENTITY_PAGE
 import com.example.movies.PHOTOS_PAGE
 import com.example.movies.data.Resource
@@ -39,7 +40,7 @@ internal class PhotosRemoteClientTest {
                     text = any(),
                     page = any()
                 )
-            } returns Response.success(PHOTOS_ENTITY_PAGE)
+            } returns Response.success(IMAGE_SEARCH_ENTITY)
             coEvery { mapper.mapFrom(any()) } returns PHOTOS_PAGE
             every { networkConnectivity.isConnected() } returns true
             val resource = SUT.searchPhotos(query = "hello", page = 1,50)

@@ -1,5 +1,6 @@
 package com.example.movies
 
+import com.example.movies.data.entities.ImageSearchEntity
 import com.example.movies.data.entities.PhotoEntity
 import com.example.movies.data.entities.PhotosPageEntity
 import com.example.movies.domain.models.Photo
@@ -16,7 +17,7 @@ val PHOTO_ENTITY_2 = PhotoEntity(
 )
 val PHOTOS_ENTITY_LIST= listOf(PHOTO_ENTITY_1, PHOTO_ENTITY_2)
 val PHOTOS_ENTITY_PAGE=PhotosPageEntity(1,10,20,30, PHOTOS_ENTITY_LIST)
-
+val IMAGE_SEARCH_ENTITY = ImageSearchEntity(PHOTOS_ENTITY_PAGE)
 val PHOTO_1 = Photo(title = "cool",link = "http://farm66.static.flickr.com/65535/51071989798_b9fd95c279.jpg")
 val PHOTO_2 = Photo(title = "cool2",link = "http://farm66.static.flickr.com/65535/51072789612_e7cacf66fb.jpg")
 val PHOTOS_LIST= listOf(PHOTO_1, PHOTO_2)

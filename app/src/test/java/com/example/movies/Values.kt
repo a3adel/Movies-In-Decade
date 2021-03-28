@@ -2,7 +2,6 @@ package com.example.movies
 
 import com.example.movies.data.entities.MovieEntity
 import com.example.movies.domain.models.Movie
-import com.example.movies.presentation.models.YearMovie
 import com.example.movies.presentation.models.YearMovies
 
 object Values {
@@ -67,39 +66,7 @@ object Values {
     )
 
 
-    val HARRY_POTTER_YEAR_MOVIE = YearMovie(
-        title = "harry potter",
-        cast = listOf(
-            "Daniel Radcliffe",
-            "Rupert Grint",
-            "Emma Watson"
-        ),
-        genres = listOf(
-            "Action",
-            "Adventure",
-            "Fantasy"
-        ),
-        rating = 4f
 
-    )
-
-    val DADDY_IS_HOME_YEAR_MOVIE = YearMovie(
-        title = "Daddy's Home",
-        cast = listOf(
-            "Mark Wahlberg",
-            "Will Ferrell",
-            "Linda Cardellini"
-        ),
-        rating = 5f,
-        genres = listOf("Comedy")
-    )
-
-    val THE_MARTIAN_YEAR_MOVIE = YearMovie(
-        title = "the martian",
-        cast = listOf("Matt Damon"),
-        genres = listOf("Science Fiction"),
-        rating = 3f
-    )
 
 
 
@@ -157,7 +124,7 @@ object Values {
 
 
 
-    val WOMEN_IN_BLACK_YEAR_MOVIE = YearMovie(
+    val WOMEN_IN_BLACK_YEAR_MOVIE = Movie(
         title = "The Woman in Black 2: Angel of Death",
         cast = listOf(
             "Phoebe Fox",
@@ -167,9 +134,10 @@ object Values {
             "Ned Dennehy"
         ),
         genres = listOf("Horror"),
-        rating = 2f
+        rating = 2f,
+        year = 2010
     )
-    val TAKEN_YEAR_MOVIE = YearMovie(
+    val TAKEN_YEAR_MOVIE = Movie(
         title = "Taken 3",
         cast = listOf(
             "Liam Neeson",
@@ -178,10 +146,10 @@ object Values {
             "Maggie Grace"
         ),
         genres = listOf("Action"),
-        rating = 4f
+        rating = 4f,year = 2012
     )
 
-    val MATCH_YEAR_MOVIE = YearMovie(
+    val MATCH_YEAR_MOVIE = Movie(
         title = "Match",
         cast = listOf(
             "Patrick Stewart",
@@ -190,10 +158,11 @@ object Values {
             "Rob Yang"
         ),
         genres = listOf("Drama"),
-        rating = 1f
+        rating = 1f,
+        year = 2010
     )
 
-    val BLACK_HAT_YEAR_MOVIE = YearMovie(
+    val BLACK_HAT_YEAR_MOVIE = Movie(
         title = "blackHat",
         cast = listOf(
             "Chris Hemsworth",
@@ -202,7 +171,8 @@ object Values {
             "Tang Wei"
         ),
         genres = listOf("Action"),
-        rating = 2f
+        rating = 2f,
+        year = 2011
     )
 
     val MOVIE_ENTITIES_LIST = listOf<MovieEntity>(
@@ -229,11 +199,11 @@ object Values {
     val YEAR_MOVIES_LIST = listOf(
         YearMovies(
             2015, listOf(
-                DADDY_IS_HOME_YEAR_MOVIE, THE_MARTIAN_YEAR_MOVIE, TAKEN_YEAR_MOVIE,
+                DADDY_IS_HOME, THE_MARTIAN_MOVIE, TAKEN_YEAR_MOVIE,
                 MATCH_YEAR_MOVIE, WOMEN_IN_BLACK_YEAR_MOVIE
             )
         ),
-        YearMovies(2011, listOf(HARRY_POTTER_YEAR_MOVIE))
+        YearMovies(2011, listOf(HARRY_POTTER_MOVIE))
 
     )
     val FILTERED_LIST = listOf(HARRY_POTTER_MOVIE)
